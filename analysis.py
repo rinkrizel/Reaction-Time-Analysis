@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -31,7 +33,7 @@ for s in range(n_subjects):
         rows.append((s, t, cond, float(rt), correct))
 
 df = pd.DataFrame(rows, columns=["subject","trial","condition","rt_ms","correct"])
-df.to_csv("synthetic_rt.csv", index=False)
+df.to_csv(Path("data", "synthetic_rt.csv", index=False))
 
 df.head()
 
@@ -51,6 +53,7 @@ plt.ylabel("Count")
 plt.title("RT distribution (before vs after cleaning)")
 plt.legend()
 plt.tight_layout()
+plt.savefig(Path("figures", "rt_distribution_before_after.png"))
 plt.show()
 
 # 4) Summary stats by condition
@@ -77,10 +80,12 @@ plt.figure()
 for cond in conditions:
     sub = by_subj[by_subj["condition"] == cond]
     plt.scatter(sub["mean_rt"], sub["accuracy"], label=cond, alpha=0.8)
+    plt.savefig(Path("figures", "rt_by_condition.png"))
 
 plt.xlabel("Mean RT (ms)")
 plt.ylabel("Accuracy")
 plt.title("Speed–accuracy tradeoff (per subject)")
 plt.legend()
 plt.tight_layout()
+plt.savefig(Path("figures", "speed_accuracy.png"))
 plt.show()
