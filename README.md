@@ -1,5 +1,5 @@
 
-# RT Toolkit (Python)
+# RT Analysis (Python)
 
 A small, beginner-friendly behavioral data analysis project focused on reaction-time (RT) data.
 It demonstrates practical steps that are common in cognitive/behavioral research:
@@ -18,4 +18,4 @@ and prevents misleading conclusions.
 ## How to run
 ```bash
 pip install -r requirements.txt
-jupyter notebook
+python3 analysis.py
